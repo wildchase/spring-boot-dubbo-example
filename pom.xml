@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.springboot.dubbo.demo</groupId>
+	<artifactId>spring-boot-dubbo-demo</artifactId>
+	<packaging>pom</packaging>
+	<name>spring-boot-dubbo-demo</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>spring-boot-dubbo-demo</description>
+
+	<modules>
+		<module>spring-boot-dubbo-demo-api</module>
+		<module>spring-boot-dubbo-demo-consumer</module>
+		<module>spring-boot-dubbo-demo-provider</module>
+	</modules>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+		<dubbo-spring-boot.version>0.2.0</dubbo-spring-boot.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-actuator</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.boot</groupId>
+				<artifactId>dubbo-spring-boot-starter</artifactId>
+				<version>${dubbo-spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.boot</groupId>
+				<artifactId>dubbo-spring-boot-actuator</artifactId>
+				<version>${dubbo-spring-boot.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<compilerArgument>-proc:none</compilerArgument>
+					<fork>true</fork>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+					<encoding>${file.encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>
